@@ -1,0 +1,49 @@
+/* pages/addMarker/addMarker.wxss */
+.container {
+    padding: 20px;
+}
+
+text {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+}
+
+image {
+    width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+button {
+    margin-bottom: 20px;
+}
+
+input {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+map {
+    height: 300px;
+    margin-bottom: 20px;
+}
+
+.suggestion-list {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.suggestion-item {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    cursor: pointer;
+}
+
+.suggestion-item:last-child {
+    border-bottom: none;
+}

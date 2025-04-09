@@ -1,0 +1,9 @@
+<view class="container">
+  <view class="marker-item" wx:for="{{markerList}}" wx:key="id">
+    <image class="front-photo" src="{{item.frontPhoto}}" mode="aspectFit"></image>
+    <text class="shop-name">{{item.shopName}}</text>
+    <button class="edit-button" bindtap="editMarker" data-id="{{item._id}}">修改</button>
+    <button class="delete-button" bindtap="deleteMarker" data-id="{{item._id}}">删除</button>
+  </view>
+  <button bindtap="goToAddPage">新增</button>
+</view>

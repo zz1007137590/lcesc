@@ -1,0 +1,6 @@
+<view class="container">
+  <button bindtap="getLocation">还原</button>
+  <map id="map" longitude="{{longitude}}" latitude="{{latitude}}" scale="18" markers="{{markers}}"></map>
+  <button type="primary" bindtap='starMap'>导航</button>
+  <button bindtap="goToMarkerListPage">添加</button>
+</view>  

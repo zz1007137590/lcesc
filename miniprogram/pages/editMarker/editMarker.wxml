@@ -1,0 +1,19 @@
+<view class="container">
+    <view>
+        <text>门头照片</text>
+        <image src="{{frontPhoto}}" mode="aspectFit"></image>
+        <button bindtap="uploadFrontPhoto">上传门头照片</button>
+    </view>
+    <view>
+        <text>详细照片</text>
+        <view wx:for="{{detailPhotos}}" wx:key="*this">
+            <image src="{{item}}" mode="aspectFit"></image>
+        </view>
+        <button bindtap="uploadDetailPhotos">上传详细照片</button>
+    </view>
+    <input placeholder="店名" value="{{shopName}}" bindinput="setShopName" />
+    <input placeholder="联系人" value="{{contactName}}" bindinput="setContactName" />
+    <input placeholder="手机号" value="{{phoneNumber}}" bindinput="setPhoneNumber" />
+    <input placeholder="详细地址" value="{{address}}" bindinput="setAddress" bindfocus="showMapSuggestion" />
+    <button bindtap="submitEdit">提交修改</button>
+</view>

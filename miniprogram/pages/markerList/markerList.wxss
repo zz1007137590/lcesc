@@ -1,0 +1,30 @@
+.marker-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .front-photo {
+    width: 80px; /* 调整照片宽度 */
+    height: 80px; /* 调整照片高度 */
+    margin-right: 10px;
+  }
+  
+  .shop-name {
+    flex: 1;
+    margin-right: 10px;
+  }
+  
+  .edit-button {
+    margin-left: 5px;
+    background-color: lightblue; /* 修改按钮为淡蓝色 */
+    color: white;
+    border: none;
+  }
+  
+  .delete-button {
+    margin-left: 5px;
+    background-color: red; /* 删除按钮为红色 */
+    color: white;
+    border: none;
+  }  
