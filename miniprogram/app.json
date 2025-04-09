@@ -6,7 +6,11 @@
     "pages/shop/shop",
     "pages/markerList/markerList",
     "pages/addMarker/addMarker",
-    "pages/editMarker/editMarker"
+    "pages/editMarker/editMarker",
+    "pages/general/general",
+    "pages/usedCarList/usedCarList",
+    "pages/addUsedCar/addUsedCar",
+    "pages/detail/detail"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

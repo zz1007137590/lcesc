@@ -1,2 +1,21 @@
-<!--pages/second/second.wxml-->
-<text>pages/second/second.wxml</text>
+<view class="container">
+    <view class="notice-container">
+        <block wx:for="{{notices}}" wx:key="*this">
+            <view class="notice-item">{{item}}</view>
+        </block>
+    </view>
+    <view class="page-title">二手车选车页面</view>
+    <button bindtap="goToUsedCarList" class="add-button">增加</button>
+    <button bindtap="goToGeneralPage" class="general-button">前往通用页面</button>
+    <view class="used-car-list">
+        <block wx:for="{{usedCars}}" wx:key="_id">
+            <view class="used-car-item" bindtap="goToUsedCarDetail" data-car="{{item}}">
+                <image src="{{item.mainImage}}" mode="aspectFill" class="used-car-image"></image>
+                <view class="used-car-info">
+                    <view class="used-car-title">{{item.title}}</view>
+                    <view class="used-car-price">￥{{item.price}}</view>
+                </view>
+            </view>
+        </block>
+    </view>
+</view>    

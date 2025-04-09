@@ -1,0 +1,91 @@
+.container {
+    margin: 0 auto;
+    padding: 1.5rem;
+    background-color: #f3f4f6;
+    min-height: 100vh;
+    max-width: 1200px; /* 设置最大宽度 */
+}
+
+.page-title {
+    font-size: 2.25rem;
+    font-weight: bold;
+    text-align: center;
+    color: #2563eb;
+    margin-bottom: 2.5rem;
+}
+
+.used-car-item {
+    display: flex;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 0.375rem;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    flex-wrap: nowrap; /* 防止换行 */
+    justify-content: space-between; /* 元素均匀分布 */
+}
+
+.used-car-image-small {
+    width: 80px; /* 缩小首图宽度 */
+    height: 80px; /* 缩小首图高度 */
+    margin-right: 1rem;
+}
+
+.used-car-title {
+    flex: 1;
+    font-size: 1.25rem;
+    color: #1f2937;
+    min-width: 100px; /* 设置最小宽度 */
+    margin-right: 1rem;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1; /* 限制为1行 */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+    word-wrap: break-word;
+    max-width: calc(8 * 1em); /* 假设每个汉字宽度为1em，8个汉字宽度 */
+}
+
+.edit-button-small {
+    background-color: #fbbf24;
+    color: #ffffff;
+    font-weight: bold;
+    padding: 0.25rem 0.5rem; /* 缩小按钮内边距 */
+    border-radius: 0.375rem;
+    outline: none;
+    margin-right: 0.5rem;
+}
+
+.edit-button-small:hover {
+    background-color: #f59e0b;
+}
+
+.delete-button-small {
+    background-color: #dc2626;
+    color: #ffffff;
+    font-weight: bold;
+    padding: 0.25rem 0.5rem; /* 缩小按钮内边距 */
+    border-radius: 0.375rem;
+    outline: none;
+}
+
+.delete-button-small:hover {
+    background-color: #b91c1c;
+}
+
+.add-button {
+    background-color: #22c55e;
+    color: #ffffff;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    border-radius: 0.375rem;
+    outline: none;
+    display: block;
+    margin-top: 2rem;
+}
+
+.add-button:hover {
+    background-color: #16a34a;
+}    

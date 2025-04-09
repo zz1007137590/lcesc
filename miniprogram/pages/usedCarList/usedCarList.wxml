@@ -1,0 +1,12 @@
+<view class="container">
+    <view class="page-title">二手车列表</view>
+    <block wx:for="{{usedCars}}" wx:key="_id">
+        <view class="used-car-item">
+            <image src="{{item.mainImage}}" mode="aspectFit" class="used-car-image-small"></image>
+            <view class="used-car-title">{{item.title}}</view>
+            <button bindtap="editUsedCar" data-id="{{item._id}}" class="edit-button-small">修改</button>
+            <button bindtap="deleteUsedCar" data-id="{{item._id}}" class="delete-button-small">删除</button>
+        </view>
+    </block>
+    <button bindtap="goToAddUsedCar" class="add-button">添加</button>
+</view>    

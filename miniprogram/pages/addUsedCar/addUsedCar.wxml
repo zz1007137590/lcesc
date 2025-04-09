@@ -1,0 +1,59 @@
+<view class="container">
+    <view class="page-title">新增二手车</view>
+    <view class="form-item">
+        <view class="form-label">首图</view>
+        <view bindtap="chooseMainImage" class="image-uploader">
+            <image src="{{mainImage || 'https://picsum.photos/200/200'}}" mode="aspectFit" class="uploaded-image"></image>
+        </view>
+    </view>
+    <view class="form-item">
+        <view class="form-label">详情图</view>
+        <view class="detail-images">
+            <block wx:for="{{detailImages}}" wx:key="*this">
+                <image src="{{item}}" mode="aspectFit" class="uploaded-image"></image>
+            </block>
+            <view bindtap="chooseDetailImages" class="image-uploader">
+                <image src="https://picsum.photos/200/200" mode="aspectFit" class="uploaded-image"></image>
+            </view>
+        </view>
+    </view>
+    <view class="form-item">
+        <view class="form-label">标题</view>
+        <input type="text" bindinput="setTitle" placeholder="请输入标题" class="form-input"></input>
+    </view>
+    <view class="form-item">
+        <view class="form-label">价格</view>
+        <input type="number" bindinput="setPrice" placeholder="请输入价格" class="form-input"></input>
+    </view>
+    <view class="form-item">
+        <view class="form-label">成本</view>
+        <input type="number" bindinput="setCost" placeholder="请输入成本" class="form-input"></input>
+    </view>
+    <view class="form-item">
+        <view class="form-label">品牌</view>
+        <picker bindchange="setBrand" value="{{brandIndex}}" range="{{brands}}" range-key="keyword">
+            <view class="picker-view">{{brands[brandIndex] && brands[brandIndex].keyword || '请选择品牌'}}</view>
+        </picker>
+    </view>
+    <view class="form-item">
+        <view class="form-label">挡位</view>
+        <picker bindchange="setGear" value="{{gearIndex}}" range="{{gears}}" range-key="keyword">
+            <view class="picker-view">{{gears[gearIndex] && gears[gearIndex].keyword || '请选择挡位'}}</view>
+        </picker>
+    </view>
+    <view class="form-item">
+        <view class="form-label">车型</view>
+        <picker bindchange="setModel" value="{{modelIndex}}" range="{{models}}" range-key="keyword">
+            <view class="picker-view">{{models[modelIndex] && models[modelIndex].keyword || '请选择车型'}}</view>
+        </picker>
+    </view>
+    <view class="form-item">
+        <view class="form-label">公里数（KM）</view>
+        <input type="number" bindinput="setMileage" placeholder="请输入公里数" class="form-input"></input>
+    </view>
+    <view class="form-item">
+        <view class="form-label">排量（T）</view>
+        <input type="number" bindinput="setDisplacement" placeholder="请输入排量" class="form-input"></input>
+    </view>
+    <button bindtap="submitForm" class="submit-button">提交</button>
+</view>    

@@ -1,0 +1,65 @@
+.container {
+    padding: 1rem;
+    background-color: #f4f4f4;
+}
+
+.image-scroll-view {
+    white-space: nowrap;
+    margin-bottom: 1rem;
+    padding: 10px;
+    position: relative;
+}
+
+.main-image {
+    display: inline-block;
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 1;
+}
+
+.overlap-image {
+    display: inline-block;
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-left: 0;
+    position: relative;
+    z-index: 2;
+    transition: transform 0.3s ease;
+}
+
+.overlap-image:hover {
+    transform: scale(1.1);
+}
+
+.car-info {
+    background-color: #fff;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.car-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.car-price {
+    font-size: 1.1rem;
+    color: #f60;
+    margin-bottom: 1rem;
+}
+
+.car-attribute {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 0.3rem;
+}    

@@ -8,7 +8,8 @@ Page({
         address: '',
         longitude: '',
         latitude: '',
-        addressSuggestions: [] // 新增：用于存储地址联想建议
+        addressSuggestions: [],
+        addressCache: {} // 新增：用于缓存地址联想建议
     },
     onLoad() {
         this.getLocation();
@@ -24,6 +25,11 @@ Page({
             },
             fail: (err) => {
                 console.error('获取位置失败', err);
+                wx.showModal({
+                    title: '提示',
+                    content: '获取位置信息失败，请检查网络或定位服务是否开启，建议将定位精度设置为高精度。',
+                    showCancel: false
+                });
             }
         });
     },
@@ -97,12 +103,21 @@ Page({
     },
     // 新增：获取地址联想建议
     async getAddressSuggestions(keyword) {
+        const { addressCache } = this.data;
+        // 检查缓存中是否有该关键字的结果
+        if (addressCache[keyword]) {
+            this.setData({
+                addressSuggestions: addressCache[keyword]
+            });
+            return;
+        }
+    
         const { longitude, latitude } = this.data;
         wx.getLocation({
             type: 'gcj02',
             success: async (res) => {
                 const token = await this.getToken();
-
+    
                 if (token) {
                     wx.request({
                         url: 'https://apis.map.qq.com/ws/place/v1/suggestion',
@@ -116,22 +131,45 @@ Page({
                             'Authorization': `Bearer ${token}`
                         },
                         success: (response) => {
-                            if (response.data.status === 0) {
+                            if (response && response.data && response.data.status === 0) {
+                                const suggestions = response.data.data;
                                 this.setData({
-                                    addressSuggestions: response.data.data
+                                    addressSuggestions: suggestions
+                                });
+                                // 更新缓存
+                                this.setData({
+                                    addressCache: {
+                                        ...addressCache,
+                                        [keyword]: suggestions
+                                    }
                                 });
                             } else {
-                                console.error('获取地址联想建议失败', response.data.message);
+                                console.error('获取地址联想建议失败', response && response.data? response.data.message : '未知错误');
+                                wx.showModal({
+                                    title: '提示',
+                                    content: '获取地址联想建议失败，请稍后重试。',
+                                    showCancel: false
+                                });
                             }
                         },
                         fail: (err) => {
                             console.error('请求地址联想建议失败', err);
+                            wx.showModal({
+                                title: '提示',
+                                content: '请求地址联想建议失败，请检查网络连接。',
+                                showCancel: false
+                            });
                         }
                     });
                 }
             },
             fail: (err) => {
                 console.error('获取当前位置失败', err);
+                wx.showModal({
+                    title: '提示',
+                    content: '获取当前位置失败，请检查定位服务。',
+                    showCancel: false
+                });
             }
         });
     },
@@ -249,20 +287,33 @@ Page({
     async getToken() {
         const apiKey = '6KJBZ-5PSKQ-FCA5X-2JXEN-4RDOS-2MBDU';
         const secretKey = 'jpZ5GUhTXlJk8UCNgwsuTRLAK2QGt80G'; // 替换为你的 Secret Key
-
-        const response = await wx.request({
-            url: 'https://example.com/api/token', // 替换为实际的认证端点
-            method: 'POST',
-            data: {
-                api_key: apiKey,
-                secret_key: secretKey
+    
+        try {
+            const response = await new Promise((resolve, reject) => {
+                wx.request({
+                    url: 'https://example.com/api/token', // 替换为实际的认证端点
+                    method: 'POST',
+                    data: {
+                        api_key: apiKey,
+                        secret_key: secretKey
+                    },
+                    success: (res) => {
+                        resolve(res);
+                    },
+                    fail: (err) => {
+                        reject(err);
+                    }
+                });
+            });
+    
+            if (response && response.data && response.data.status === 0) {
+                return response.data.token;
+            } else {
+                console.error('获取 Token 失败，响应信息：', response);
+                return null;
             }
-        });
-
-        if (response.data.status === 0) {
-            return response.data.token;
-        } else {
-            console.error('获取 Token 失败', response.data.message);
+        } catch (error) {
+            console.error('请求 Token 时出现错误：', error);
             return null;
         }
     }

@@ -1,0 +1,47 @@
+<view class="container">
+    <view class="page-title">通用页面</view>
+    <view class="announcement-section">
+        <view class="section-title">公告</view>
+        <input type="text" placeholder="输入新公告内容" bindinput="setNewAnnouncementInput" class="input-field" />
+        <button bindtap="addNewAnnouncement" class="add-button">确定</button>
+        <block wx:for="{{announcements}}" wx:key="id">
+            <view class="announcement-item">
+                <view class="announcement-content">{{item.content}}</view>
+                <button bindtap="editAnnouncement" data-id="{{item._id}}" class="edit-button">修改</button>
+            </view>
+        </block>
+    </view>
+    <view class="keyword-section">
+        <view class="section-title">挡位</view>
+        <view class="keyword-list">
+            <view bindtap="selectKeyword" data-type="gear" data-keyword="{{item.keyword}}" data-id="{{item._id}}" class="keyword-tag {{item.isSelected? 'selected-keyword' : ''}}" wx:for="{{gearKeywords}}" wx:key="*this">{{item.keyword}}</view>
+        </view>
+        <input type="text" placeholder="输入挡位关键字" bindinput="setGearInput" class="input-field" />
+        <view class="button-group">
+            <button bindtap="addGearKeyword" class="add-button">添加</button>
+            <button bindtap="deleteSelectedKeyword" data-type="gear" class="delete-button">删除</button>
+        </view>
+    </view>
+    <view class="keyword-section">
+        <view class="section-title">车型</view>
+        <view class="keyword-list">
+            <view bindtap="selectKeyword" data-type="model" data-keyword="{{item.keyword}}" data-id="{{item._id}}" class="keyword-tag {{item.isSelected? 'selected-keyword' : ''}}" wx:for="{{modelKeywords}}" wx:key="*this">{{item.keyword}}</view>
+        </view>
+        <input type="text" placeholder="输入车型关键字" bindinput="setModelInput" class="input-field" />
+        <view class="button-group">
+            <button bindtap="addModelKeyword" class="add-button">添加</button>
+            <button bindtap="deleteSelectedKeyword" data-type="model" class="delete-button">删除</button>
+        </view>
+    </view>
+    <view class="keyword-section">
+        <view class="section-title">品牌</view>
+        <view class="keyword-list">
+            <view bindtap="selectKeyword" data-type="brand" data-keyword="{{item.keyword}}" data-id="{{item._id}}" class="keyword-tag {{item.isSelected? 'selected-keyword' : ''}}" wx:for="{{brandKeywords}}" wx:key="*this">{{item.keyword}}</view>
+        </view>
+        <input type="text" placeholder="输入品牌关键字" bindinput="setBrandInput" class="input-field" />
+        <view class="button-group">
+            <button bindtap="addBrandKeyword" class="add-button">添加</button>
+            <button bindtap="deleteSelectedKeyword" data-type="brand" class="delete-button">删除</button>
+        </view>
+    </view>
+</view>    

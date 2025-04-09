@@ -1,0 +1,17 @@
+<view class="container">
+    <scroll-view class="image-scroll-view" scroll-x="true" scroll-with-animation="true" bindtouchstart="onTouchStart" bindtouchmove="onTouchMove" bindtouchend="onTouchEnd" enhanced>
+        <image src="{{car.mainImage}}" mode="aspectFill" class="main-image"></image>
+        <block wx:for="{{car.detailImages}}" wx:key="*this">
+            <image src="{{item}}" mode="aspectFill" class="overlap-image"></image>
+        </block>
+    </scroll-view>
+    <view class="car-info">
+        <view class="car-title">{{car.title}}</view>
+        <view class="car-price">￥{{car.price}}</view>
+        <view class="car-attribute">品牌：{{car.brand}}</view>
+        <view class="car-attribute">挡位：{{car.gear}}</view>
+        <view class="car-attribute">公里数：{{car.mileage}} 公里</view>
+        <view class="car-attribute">排量：{{car.displacement}}L</view>
+        <view class="car-attribute">车型：{{car.model}}</view>
+    </view>
+</view>    
