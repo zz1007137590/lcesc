@@ -1,30 +1,35 @@
-// 云函数入口文件
-const cloud = require('wx-server-sdk');
+// lcesc/cloudfunctions/addUsedCar/index.js
+const cloud = require('wx-server-sdk')
 
-cloud.init();
-const db = cloud.database();
+cloud.init()
+const db = cloud.database()
 
-// 云函数入口函数
 exports.main = async (event, context) => {
-    const { mainImage, detailImages, title, price, cost, brand, gear, model, mileage, displacement } = event;
     try {
         await db.collection('usedCars').add({
             data: {
-                mainImage,
-                detailImages,
-                title,
-                price,
-                cost,
-                brand,
-                gear,
-                model,
-                mileage,
-                displacement
+                mainImage: event.mainImage,
+                detailImages: event.detailImages,
+                title: event.title,
+                price: event.price,
+                cost: event.cost,
+                brand: event.brand,
+                gear: event.gear,
+                model: event.model,
+                mileage: event.mileage,
+                displacement: event.displacement,
+                year: event.year // 新增年份数据
             }
-        });
-        return { success: true };
-    } catch (e) {
-        console.error('添加二手车信息时出错：', e);
-        return { success: false };
+        })
+        return {
+            success: true,
+            message: '新增二手车成功'
+        }
+    } catch (err) {
+        console.error('新增二手车失败', err)
+        return {
+            success: false,
+            message: '新增二手车失败，请稍后重试'
+        }
     }
-};    
+}

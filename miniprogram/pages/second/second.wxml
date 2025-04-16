@@ -5,6 +5,36 @@
         </block>
     </view>
     <view class="page-title">二手车选车页面</view>
+    <!-- 新增筛选条件 -->
+    <view class="filter-container">
+        <view class="form-item">
+            <view class="form-label">品牌</view>
+            <picker bindchange="setBrandFilter" value="{{brandFilterIndex}}" range="{{brands}}" range-key="keyword">
+                <view class="picker-view">{{brands[brandFilterIndex] && brands[brandFilterIndex].keyword || '请选择品牌'}}</view>
+            </picker>
+        </view>
+        <view class="form-item">
+            <view class="form-label">挡位</view>
+            <picker bindchange="setGearFilter" value="{{gearFilterIndex}}" range="{{gears}}" range-key="keyword">
+                <view class="picker-view">{{gears[gearFilterIndex] && gears[gearFilterIndex].keyword || '请选择挡位'}}</view>
+            </picker>
+        </view>
+        <view class="form-item">
+            <view class="form-label">车型</view>
+            <picker bindchange="setModelFilter" value="{{modelFilterIndex}}" range="{{models}}" range-key="keyword">
+                <view class="picker-view">{{models[modelFilterIndex] && models[modelFilterIndex].keyword || '请选择车型'}}</view>
+            </picker>
+        </view>
+        <view class="form-item">
+            <view class="form-label">公里数</view>
+            <button bindtap="showMileageModal" class="form-button">{{mileageFilter}} 公里</button>
+        </view>
+        <view class="form-item">
+            <view class="form-label">年份</view>
+            <button bindtap="showYearModal" class="form-button">{{yearFilter}} 年</button>
+        </view>
+        <button bindtap="searchCars" class="search-button">搜索</button>
+    </view>
     <button bindtap="goToUsedCarList" class="add-button">增加</button>
     <button bindtap="goToGeneralPage" class="general-button">前往通用页面</button>
     <view class="used-car-list">
@@ -18,4 +48,26 @@
             </view>
         </block>
     </view>
-</view>    
+    <!-- 公里数弹窗 -->
+    <view class="modal-mask" wx:if="{{showMileageModal}}">
+        <view class="modal-container">
+            <view class="modal-title">选择公里数</view>
+            <slider bindchange="setTempMileageFilter" min="0" max="{{maxMileage}}" step="100" value="{{tempMileageFilter}}" show-value />
+            <view class="modal-button-group">
+                <button bindtap="confirmMileageFilter" class="modal-button">确定</button>
+                <button bindtap="cancelMileageFilter" class="modal-button">取消</button>
+            </view>
+        </view>
+    </view>
+    <!-- 年份弹窗 -->
+    <view class="modal-mask" wx:if="{{showYearModal}}">
+        <view class="modal-container">
+            <view class="modal-title">选择年份</view>
+            <slider bindchange="setTempYearFilter" min="{{minYear}}" max="{{maxYear}}" step="1" value="{{tempYearFilter}}" show-value />
+            <view class="modal-button-group">
+                <button bindtap="confirmYearFilter" class="modal-button">确定</button>
+                <button bindtap="cancelYearFilter" class="modal-button">取消</button>
+            </view>
+        </view>
+    </view>
+</view>

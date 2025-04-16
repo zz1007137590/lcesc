@@ -12,7 +12,8 @@ Page({
         models: [],
         modelIndex: 0,
         mileage: '',
-        displacement: ''
+        displacement: '',
+        year: '' // 新增年份数据
     },
     onLoad() {
         this.getBrands();
@@ -148,9 +149,14 @@ Page({
             displacement: e.detail.value
         });
     },
+    setYear(e) {
+        this.setData({
+            year: e.detail.value
+        });
+    },
     async submitForm() {
-        const { mainImage, detailImages, title, price, cost, brands, brandIndex, gears, gearIndex, models, modelIndex, mileage, displacement } = this.data;
-        if (!mainImage || detailImages.length === 0 ||!title ||!price ||!cost ||!brands[brandIndex] ||!gears[gearIndex] ||!models[modelIndex] ||!mileage ||!displacement) {
+        const { mainImage, detailImages, title, price, cost, brands, brandIndex, gears, gearIndex, models, modelIndex, mileage, displacement, year } = this.data;
+        if (!mainImage || detailImages.length === 0 ||!title ||!price ||!cost ||!brands[brandIndex] ||!gears[gearIndex] ||!models[modelIndex] ||!mileage ||!displacement ||!year) {
             wx.showModal({
                 title: '提示',
                 content: '请填写完整信息',
@@ -176,7 +182,8 @@ Page({
                     gear,
                     model,
                     mileage,
-                    displacement
+                    displacement,
+                    year // 新增年份数据
                 }
             });
             wx.showToast({
@@ -208,4 +215,4 @@ Page({
             });
         });
     }
-});    
+});
