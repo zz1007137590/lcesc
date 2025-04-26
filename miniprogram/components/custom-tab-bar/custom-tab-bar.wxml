@@ -1,0 +1,20 @@
+<view class="custom-tab-bar">
+    <!-- 第一套导航栏 -->
+    <view class="tab-bar-group">
+        <block wx:for="{{tabBarList1}}" wx:key="pagePath">
+            <view class="tab-bar-item" bindtap="switchTab" data-url="{{item.pagePath}}">
+                <image src="{{currentTab === item.pagePath ? item.selectedIconPath : item.iconPath}}" mode="aspectFit"></image>
+                <text style="color: {{currentTab === item.pagePath ? selectedColor : color}}">{{item.text}}</text>
+            </view>
+        </block>
+    </view>
+    <!-- 第二套导航栏 -->
+    <view class="tab-bar-group">
+        <block wx:for="{{tabBarList2}}" wx:key="pagePath">
+            <view class="tab-bar-item" bindtap="switchTab" data-url="{{item.pagePath}}">
+                <image src="{{currentTab === item.pagePath ? item.selectedIconPath : item.iconPath}}" mode="aspectFit"></image>
+                <text style="color: {{currentTab === item.pagePath ? selectedColor : color}}">{{item.text}}</text>
+            </view>
+        </block>
+    </view>
+</view>

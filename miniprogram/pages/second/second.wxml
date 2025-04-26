@@ -70,4 +70,5 @@
             </view>
         </view>
     </view>
+    <custom-tab-bar></custom-tab-bar>
 </view>

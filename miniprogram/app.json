@@ -10,7 +10,9 @@
     "pages/general/general",
     "pages/usedCarList/usedCarList",
     "pages/addUsedCar/addUsedCar",
-    "pages/detail/detail"
+    "pages/detail/detail",
+    "pages/shop-admin/shop-admin",
+    "components/custom-tab-bar/custom-tab-bar"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
@@ -20,38 +22,6 @@
     "navigationBarTextStyle": "black"
   },
   "requiredPrivateInfos": [
-      "getLocation"
-  ],
-  "tabBar": {
-    "color": "#000000",
-    "selectedColor": "#1aad19",
-    "backgroundColor": "#ffffff",
-    "borderStyle": "black",
-    "list": [
-      {
-        "pagePath": "pages/second/second",
-        "text": "选车",
-        "iconPath": "images/tabbar/second.png",
-        "selectedIconPath": "images/tabbar/second_active.png"
-      },
-      {
-        "pagePath": "pages/map/map",
-        "text": "地图",
-        "iconPath": "images/tabbar/map.png",
-        "selectedIconPath": "images/tabbar/map_active.png"
-      },
-      {
-        "pagePath": "pages/shop/shop",
-        "text": "商城",
-        "iconPath": "images/tabbar/shop.png",
-        "selectedIconPath": "images/tabbar/shop_active.png"
-      },
-      {
-        "pagePath": "pages/my/my",
-        "text": "我的",
-        "iconPath": "images/tabbar/my.png",
-        "selectedIconPath": "images/tabbar/my_active.png"
-      }
-    ]
-  }
+    "getLocation"
+  ]
 }
